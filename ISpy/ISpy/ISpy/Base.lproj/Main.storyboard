@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ISpy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" delaysContentTouches="NO" minimumZoomScale="0.0" maximumZoomScale="6" translatesAutoresizingMaskIntoConstraints="NO" id="8Cv-aK-PIW">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView autoresizesSubviews="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokes" translatesAutoresizingMaskIntoConstraints="NO" id="afd-YZ-zgR">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="afd-YZ-zgR" firstAttribute="trailing" secondItem="8Cv-aK-PIW" secondAttribute="trailingMargin" constant="8" id="3Mc-m7-Lyc"/>
+                                    <constraint firstItem="afd-YZ-zgR" firstAttribute="width" secondItem="8Cv-aK-PIW" secondAttribute="width" id="7eh-Fa-YUJ"/>
+                                    <constraint firstItem="afd-YZ-zgR" firstAttribute="top" secondItem="8Cv-aK-PIW" secondAttribute="topMargin" constant="-8" id="N3l-HS-AUb"/>
+                                    <constraint firstItem="afd-YZ-zgR" firstAttribute="height" secondItem="8Cv-aK-PIW" secondAttribute="height" id="ZEo-N2-cJm"/>
+                                    <constraint firstItem="afd-YZ-zgR" firstAttribute="bottom" secondItem="8Cv-aK-PIW" secondAttribute="bottomMargin" constant="8" id="Zlc-uZ-Uvk"/>
+                                    <constraint firstItem="afd-YZ-zgR" firstAttribute="leading" secondItem="8Cv-aK-PIW" secondAttribute="leadingMargin" constant="-8" id="vgL-gE-2dU"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="WOx-lB-R95"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="8Cv-aK-PIW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9Ol-f6-DWh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8Cv-aK-PIW" secondAttribute="trailing" id="U4T-7g-6x4"/>
+                            <constraint firstItem="8Cv-aK-PIW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Wbm-W8-ZmU"/>
+                            <constraint firstItem="8Cv-aK-PIW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="w6B-DO-jdB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="ScrollViewContent" destination="8Cv-aK-PIW" id="YGF-kA-ovV"/>
+                        <outlet property="imageZoom" destination="afd-YZ-zgR" id="alh-xZ-Wfg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pokes" width="1920" height="1200"/>
+    </resources>
+</document>
