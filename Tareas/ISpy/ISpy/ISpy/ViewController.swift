@@ -22,11 +22,13 @@ class ViewController: UIViewController, UIScrollViewDelegate {
         return self.imageZoom
     }
     
+    
     func updateZoomFor(size: CGSize){
         let widthScale = size.width / imageZoom.bounds.width
         let heightScale = size.height / imageZoom.bounds.height
         let scale = min(widthScale, heightScale)
         ScrollViewContent.minimumZoomScale = scale
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
