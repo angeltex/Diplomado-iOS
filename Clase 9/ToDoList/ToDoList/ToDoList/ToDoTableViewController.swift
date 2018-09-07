@@ -8,7 +8,10 @@
 
 import UIKit
 
-class ToDoTableViewController : UITableViewController{
+class ToDoTableViewController : UITableViewController,  ToDoCellDelegate{
+    
+   
+    
     var todos = [ToDo]()
     var isPickerHidden = true
 
@@ -33,12 +36,18 @@ class ToDoTableViewController : UITableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell =
             tableView.dequeueReusableCell(withIdentifier:
-                "ToDoCellIdentifier") else {
+                "ToDoCellIdentifier") as? ToDoCell else {
                     fatalError("Could not dequeue a cell")
         }
         
+        cell.delegate = self
+
+        
         let todo = todos[indexPath.row]
-        cell.textLabel?.text = todo.title
+        //en la celda normal
+        //cell.textLabel?.text = todo.title
+        cell.titleLabel?.text = todo.title
+        cell.isCompleteButton.isSelected = todo.isComplete
         return cell
         
     }
@@ -54,6 +63,8 @@ class ToDoTableViewController : UITableViewController{
         if editingStyle == .delete {
             todos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            ToDo.saveToDos(todos)
+
         }
     }
    
@@ -75,6 +86,7 @@ class ToDoTableViewController : UITableViewController{
                                                     with: .automatic)
             }
         }
+        ToDo.saveToDos(todos)
 
     }
     
@@ -89,32 +101,20 @@ class ToDoTableViewController : UITableViewController{
         }
     }
     
-    /*
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let normalCellHeight = CGFloat(44)
-        let largeCellHeight = CGFloat(200)
-        
-        switch(indexPath) {
-        case [1,0]: //Due Date Cell
-            return isEndDatePickerHidden ? normalCellHeight : largeCellHeight
-        case [2,0]: //Notes Cell
-            return largeCellHeight
-        default: return normalCellHeight
+    func checkmarkTapped(sender: ToDoCell) {
+        if let indexPath = tableView.indexPath(for: sender) {
+            var todo = todos[indexPath.row]
+            todo.isComplete = !todo.isComplete
+            todos[indexPath.row] = todo
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+            ToDo.saveToDos(todos)
+
         }
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt
-        indexPath: IndexPath) {
-        switch (indexPath) {
-        case [2,0]:
-            isEndDatePickerHidden = !isEndDatePickerHidden
-            dueDateLabel.textColor = isEndDatePickerHidden ? .black : tableView.tintColor
-            tableView.beginUpdates()
-            tableView.endUpdates()
-        default: break
-        }
-    }
- */
+    
+    
+ 
 
         
 }

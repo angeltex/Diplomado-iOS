@@ -19,14 +19,44 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCellIdentifier" id="Gr9-yn-5qc">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCellIdentifier" id="Gr9-yn-5qc" customClass="ToDoCell" customModule="ToDoList" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gr9-yn-5qc" id="sag-Q3-AO9">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lVS-q0-6Fu">
+                                            <rect key="frame" x="8" y="3" width="36" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="36" id="PkB-K8-06X"/>
+                                                <constraint firstAttribute="height" constant="36" id="ip4-fn-sUM"/>
+                                            </constraints>
+                                            <state key="normal" image="unchecked"/>
+                                            <state key="disabled" image="unchecked"/>
+                                            <state key="selected" image="checked"/>
+                                            <connections>
+                                                <action selector="completeButtontapped" destination="Gr9-yn-5qc" eventType="touchUpInside" id="NKk-2X-Qjp"/>
+                                                <action selector="isCompleteButtonTapped:" destination="WuW-NV-Bgx" eventType="touchUpInside" id="fLl-74-53V"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1N-mM-Bfl">
+                                            <rect key="frame" x="52" y="12" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="e1N-mM-Bfl" firstAttribute="centerY" secondItem="sag-Q3-AO9" secondAttribute="centerY" id="GX8-Gi-OeF"/>
+                                        <constraint firstItem="lVS-q0-6Fu" firstAttribute="centerY" secondItem="sag-Q3-AO9" secondAttribute="centerY" id="kTo-98-FMi"/>
+                                        <constraint firstItem="e1N-mM-Bfl" firstAttribute="leading" secondItem="lVS-q0-6Fu" secondAttribute="trailing" constant="8" id="vYV-5S-l3Z"/>
+                                        <constraint firstItem="lVS-q0-6Fu" firstAttribute="leading" secondItem="sag-Q3-AO9" secondAttribute="leading" constant="8" id="zf1-3K-WcF"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="isCompleteButton" destination="lVS-q0-6Fu" id="Vhb-q8-mLi"/>
+                                    <outlet property="titleLabel" destination="e1N-mM-Bfl" id="Svt-Ib-gAc"/>
                                     <segue destination="WuW-NV-Bgx" kind="show" identifier="showDetails" id="Bws-dB-IJK"/>
                                 </connections>
                             </tableViewCell>
@@ -46,7 +76,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="geq-6g-x53" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="929" y="-686"/>
+            <point key="canvasLocation" x="928.79999999999995" y="-686.80659670164926"/>
         </scene>
         <!--New ToDo-->
         <scene sceneID="RKf-5s-0mS">
