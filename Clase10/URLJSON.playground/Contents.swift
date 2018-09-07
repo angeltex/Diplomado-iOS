@@ -10,7 +10,7 @@ struct Results: Codable {
 
 struct Tracks: Codable{
     var artistName: String
-    var collectionName:String
+    var trackName:String
 }
 
 let Baseurl = URL(string: "https://itunes.apple.com/search?")!
@@ -35,7 +35,9 @@ let task = URLSession.shared.dataTask(with: url!){ (data,response,error) in
    // if let data = data, let trackDictionary = try? JSONDecoder().decode([String: String].self, from: data) {
         //Lo que tu leas parcealo o decodificalo a este modelo [String: String]
     if let data = data, let trackDictionary = try? jsonDecoder.decode(Results.self, from: data) {
-            print(trackDictionary)
+        print(trackDictionary.results.forEach({ (track) in
+            print(track.artistName , track.trackName)
+        }))
     }else {
         print(error.debugDescription)
     }
